@@ -1,0 +1,24 @@
+PATH
+  remote: .
+  specs:
+    ruby (0.1.0)
+
+GEM
+  remote: https://rubygems.org/
+  specs:
+    netrc (0.7.9)
+    rake (10.4.2)
+    rest_client (1.8.3)
+      netrc (~> 0.7.7)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  bundler (~> 1.10)
+  rake (~> 10.0)
+  rest_client
+  ruby!
+
+BUNDLED WITH
+   1.10.4
