@@ -1,15 +1,14 @@
 module Bitcodin
-  class S3OutputConfig
+  class GCSOutputConfig
 
     attr_accessor :TYPE, :values
 
-    def initialize(name, region, accessKey, secretKey, bucket, prefix = '', makePublic = 'false')
-      @TYPE   = 's3'
+    def initialize(name, accessKey, secretKey, bucket, prefix = '', makePublic = 'false')
+      @TYPE   = 'gcs'
 
       @values = '{
         "type": "'       + @TYPE + '",
         "name": "'       + name + '",
-        "region": "'     + region + '",
         "accessKey": "'  + accessKey + '",
         "secretKey": "'  + secretKey + '",
         "bucket": "'     + bucket + '",
