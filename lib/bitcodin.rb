@@ -196,15 +196,28 @@ module Bitcodin
     # Wallet
 
     def getWalletInformation
-
+      url = @apiURL.concat('wallet')
+      return @httpClient.sendRequest('get', url)
     end
 
-    def getListOfAllDeposits
-
+    def getListOfAllDeposits(page = nil)
+      url = @apiURL.concat('wallet/deposits')
+      if page.nil?
+        return @httpClient.sendRequest('get', url)
+      else
+        url = url.concat('/').concat(page.to_s)
+        return @httpClient.sendRequest('get', url)
+      end
     end
 
-    def getListOfAllBills
-
+    def getListOfAllBills(page = nil)
+      url = @apiURL.concat('wallet/bills')
+      if page.nil?
+        return @httpClient.sendRequest('get', url)
+      else
+        url = url.concat('/').concat(page.to_s)
+        return @httpClient.sendRequest('get', url)
+      end
     end
 
   end
