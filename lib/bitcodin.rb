@@ -4,6 +4,8 @@ require 'rest_client'
 
 require 'bitcodin/input/http_input_config'
 require 'bitcodin/output/s3_output_config'
+require 'bitcodin/output/gcs_output_config'
+require 'bitcodin/output/ftp_output_config'
 require 'bitcodin/network/http'
 
 module Bitcodin
@@ -66,24 +68,34 @@ module Bitcodin
       return @httpClient.sendRequest('post', url, config.values)
     end
 
-    def createGCSOutput(gcsOutputConfig)
-
+    def createGCSOutput(config)
+      url = @apiURL.concat('output/create')
+      return @httpClient.sendRequest('post', url, config.values)
     end
 
-    def createFTPOutput(ftpOutputConfig)
-
+    def createFTPOutput(config)
+      url = @apiURL.concat('output/create')
+      return @httpClient.sendRequest('post', url, config.values)
     end
 
     def listOutputs(page = nil)
-
+      url = @apiURL.concat('outputs')
+      if page.nil?
+        return @httpClient.sendRequest('get', url)
+      else
+        url = url.concat('/').concat(page.to_s)
+        return @httpClient.sendRequest('get', url)
+      end
     end
 
     def getOutputDetails(id)
-
+      url = @apiURL.concat('output/').concat(id.to_s)
+      return @httpClient.sendRequest('get', url)
     end
 
     def deleteOutput(id)
-
+      url = @apiURL.concat('output/').concat(id.to_s)
+      return @httpClient.sendRequest('delete', url)
     end
 
     # Encoding Profiles
@@ -161,5 +173,4 @@ module Bitcodin
     end
 
   end
-
 end
