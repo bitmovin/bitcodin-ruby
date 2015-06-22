@@ -1,0 +1,5 @@
+language: ruby
+
+notifications:
+  email:
+    - bitcodin-ruby@bitmovin.net
