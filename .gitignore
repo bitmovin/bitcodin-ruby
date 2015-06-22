@@ -7,7 +7,9 @@
 /spec/reports/
 /test/tmp/
 /test/version_tmp/
+/test/resources/settings.json
 /tmp/
+/.idea
 
 ## Specific to RubyMotion:
 .dat*
