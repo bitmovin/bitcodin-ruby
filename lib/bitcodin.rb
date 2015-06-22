@@ -9,6 +9,7 @@ require 'bitcodin/output/ftp_output_config'
 require 'bitcodin/media/encoding_profile'
 require 'bitcodin/job/job'
 require 'bitcodin/transfer/transfer_config'
+require 'bitcodin/payment/invoice_infos'
 require 'bitcodin/network/http'
 
 module Bitcodin
@@ -182,12 +183,14 @@ module Bitcodin
 
     # Paymant
 
-    def updateInvoiceInfos(invoiceInfos)
-
+    def updateInvoiceInfos(infos)
+      url = @apiURL.concat('payment/invoiceinfo')
+      return @httpClient.sendRequest('post', url, infos.values)
     end
 
     def getInvoiceInfos
-
+      url = @apiURL.concat('payment/invoiceinfo')
+      return @httpClient.sendRequest('get', url)
     end
 
     # Wallet
