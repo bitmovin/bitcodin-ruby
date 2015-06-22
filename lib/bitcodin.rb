@@ -170,12 +170,14 @@ module Bitcodin
 
     # Statistics
 
-    def getCurrentOutputStatus(from, to)
-
+    def getCurrentOutputStatus
+      url = @apiURL.concat('statistics')
+      return @httpClient.sendRequest('get', url)
     end
 
-    def getJobStatistics
-
+    def getJobStatistics(from, to)
+      url = @apiURL.concat('statistics/jobs/').concat(from.to_s).concat('/').concat(to.to_s)
+      return @httpClient.sendRequest('get', url)
     end
 
     # Paymant
