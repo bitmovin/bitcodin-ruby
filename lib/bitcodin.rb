@@ -7,9 +7,14 @@ require 'bitcodin/output/s3_output_config'
 require 'bitcodin/output/gcs_output_config'
 require 'bitcodin/output/ftp_output_config'
 require 'bitcodin/media/encoding_profile'
+require 'bitcodin/job/job'
+require 'bitcodin/transfer/transfer_config'
 require 'bitcodin/network/http'
 
 module Bitcodin
+
+  MPEG_DASH_MPD = 'mpd'
+  HLS_M3U8      = 'm3u8'
 
   class BitcodinAPI
 
@@ -128,28 +133,39 @@ module Bitcodin
 
     # Jobs
 
-    def createJob(jobConfig)
-
+    def createJob(config)
+      url = @apiURL.concat('job/create')
+      return @httpClient.sendRequest('post', url, config.values)
     end
 
     def listAllJobs(page = nil)
-
+      url = @apiURL.concat('jobs')
+      if page.nil?
+        return @httpClient.sendRequest('get', url)
+      else
+        url = url.concat('/').concat(page.to_s)
+        return @httpClient.sendRequest('get', url)
+      end
     end
 
     def getJobDetails(id)
-
+      url = @apiURL.concat('job/').concat(id.to_s)
+      return @httpClient.sendRequest('get', url)
     end
 
     def getCurrentJobStatus(id)
-
+      url = @apiURL.concat('job/').concat(id.to_s).concat('/status')
+      return @httpClient.sendRequest('get', url)
     end
 
-    def createTransferJob(transferConfig)
-
+    def createTransferJob(config)
+      url = @apiURL.concat('job/transfer')
+      return @httpClient.sendRequest('post', url, config.values)
     end
 
     def listTransferJob(id)
-
+      url = @apiURL.concat('job/').concat(id.to_s).concat('/transfers')
+      return @httpClient.sendRequest('get', url)
     end
 
     # Statistics
