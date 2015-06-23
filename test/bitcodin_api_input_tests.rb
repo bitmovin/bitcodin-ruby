@@ -28,7 +28,7 @@ module Bitcodin
       @bitcodinAPI = BitcodinAPI.new(apiKey)
 
       # create http config
-      @httpConfig = HTTPInputConfig.new('http://ftp.nluug.nl/pub/graphics/blender/demo/movies/Sintel.2010.720p.mkv')
+      @httpConfig  = HTTPInputConfig.new('http://ftp.nluug.nl/pub/graphics/blender/demo/movies/Sintel.2010.720p.mkv')
     end
 
     def test_createInput
@@ -36,11 +36,21 @@ module Bitcodin
       assert_equal(response.code, ResponseCodes::POST)
     end
 
-    def test_listAllJobs
-      response = @bitcodinAPI.listAllJobs
-      assert_equal(response.code, ResponseCodes::GET)
+    def test_listInput
+     response = @bitcodinAPI.listInput
+     assert_equal(response.code, ResponseCodes::GET)
     end
 
+    def test_getInputDetails
+     response = @bitcodinAPI.getInputDetails(4440)
+     assert_equal(response.code, ResponseCodes::GET)
+    end
+
+    def test_deleteInput
+      response = @bitcodinAPI.deleteInput(4442)
+      assert_equal(response.code, ResponseCodes::DELETE)
+    end
+å
     def teardown
       ## Nothing up to now
     end

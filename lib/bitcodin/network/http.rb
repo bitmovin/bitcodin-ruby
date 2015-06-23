@@ -62,8 +62,8 @@ module Bitcodin
     end
 
     def callResourceDelete(url)
-      puts 'Delete'
-      puts url
+      # puts 'Delete'
+      # puts url
       begin
         response = RestClient.delete url, @headers
         return response
