@@ -22,8 +22,8 @@ module Bitcodin
     end
 
     def callResourceGet(url)
-      puts 'Get'
-      puts url
+      # puts 'Get'
+      # puts url
       begin
         response = RestClient.get url, @headers
         return response
@@ -35,8 +35,8 @@ module Bitcodin
     end
 
     def callResourcePatch(url)
-      puts 'Patch'
-      puts url
+      # puts 'Patch'
+      # puts url
       begin
         response = RestClient.patch url, @headers
         return response
@@ -48,9 +48,9 @@ module Bitcodin
     end
 
     def callResourcePost(url, value)
-      puts 'Post'
-      puts url
-      puts value
+      # puts 'Post'
+      # puts url
+      # puts value
       begin
         response = RestClient.post url, value, @headers
         return response
