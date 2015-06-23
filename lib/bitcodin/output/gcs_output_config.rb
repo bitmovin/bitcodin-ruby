@@ -4,7 +4,7 @@ module Bitcodin
     attr_accessor :TYPE, :values
 
     def initialize(name, accessKey, secretKey, bucket, prefix = '', makePublic = 'false')
-      @TYPE   = 'gcs'
+      @TYPE   = OutputType::GCS
 
       @values = '{
         "type": "'       + @TYPE + '",

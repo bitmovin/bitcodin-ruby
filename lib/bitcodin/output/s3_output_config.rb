@@ -4,7 +4,7 @@ module Bitcodin
     attr_accessor :TYPE, :values
 
     def initialize(name, region, accessKey, secretKey, bucket, prefix = '', makePublic = 'false')
-      @TYPE   = 's3'
+      @TYPE   = OutputType::S3
 
       @values = '{
         "type": "'       + @TYPE + '",

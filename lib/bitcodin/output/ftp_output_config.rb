@@ -4,7 +4,7 @@ module Bitcodin
     attr_accessor :TYPE, :values
 
     def initialize(name, host, username, password, passive = 'true')
-      @TYPE   = 'ftp'
+      @TYPE   = OutputType::FTP
 
       @values = '{
         "type": "'     + @TYPE + '",
