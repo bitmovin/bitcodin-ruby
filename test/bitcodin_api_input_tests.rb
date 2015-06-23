@@ -41,15 +41,15 @@ module Bitcodin
      assert_equal(response.code, ResponseCodes::GET)
     end
 
-    def test_getInputDetails
-     response = @bitcodinAPI.getInputDetails(4440)
-     assert_equal(response.code, ResponseCodes::GET)
-    end
-
-    def test_deleteInput
-      response = @bitcodinAPI.deleteInput(4436)
-      assert_equal(response.code, ResponseCodes::DELETE)
-    end
+    # def test_getInputDetails
+    #  response = @bitcodinAPI.getInputDetails(4440)
+    #  assert_equal(response.code, ResponseCodes::GET)
+    # end
+    #
+    # def test_deleteInput
+    #   response = @bitcodinAPI.deleteInput(4801)
+    #   assert_equal(response.code, ResponseCodes::DELETE)
+    # end
 
     def teardown
       ## Nothing up to now
