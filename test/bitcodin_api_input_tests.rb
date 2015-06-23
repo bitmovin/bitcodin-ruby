@@ -1,5 +1,5 @@
 require 'test/unit'
-require '../lib/bitcodin.rb'
+require 'bitcodin'
 require 'json'
 
 module Bitcodin
@@ -17,7 +17,7 @@ module Bitcodin
 
     def setup
       # read access information (e.g. api key, etc.) from file
-      file         = File.read('resources/settings.json')
+      file         = File.read('test/resources/settings.json')
       data         = JSON.parse(file)
       apiKey       = data['apikey']
 
@@ -30,7 +30,6 @@ module Bitcodin
 
     def test_createInput
       response = @bitcodinAPI.createInput(@httpConfig)
-      puts response
       assert_equal(response.code, ResponseCodes::POST)
     end
 
