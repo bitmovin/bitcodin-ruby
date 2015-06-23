@@ -6,6 +6,7 @@ PATH
 GEM
   remote: https://rubygems.org/
   specs:
+    json (1.7.7)
     netrc (0.7.9)
     rake (10.4.2)
     rest_client (1.8.3)
@@ -16,6 +17,7 @@ PLATFORMS
 
 DEPENDENCIES
   bundler (~> 1.10)
+  json
   rake (~> 10.0)
   rest_client
   ruby!
