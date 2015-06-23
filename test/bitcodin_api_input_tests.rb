@@ -1,9 +1,8 @@
-require 'coveralls'
-Coveralls.wear!
-
 require 'test/unit'
 require 'bitcodin'
 require 'json'
+require 'coveralls'
+Coveralls.wear!
 
 
 module Bitcodin

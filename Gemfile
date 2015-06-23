@@ -4,4 +4,4 @@ source 'https://rubygems.org'
 gemspec
 gem 'rest_client'
 gem 'json'
-gem 'coveralls', require: false
+gem 'coveralls'
