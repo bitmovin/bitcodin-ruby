@@ -47,10 +47,10 @@ module Bitcodin
     end
 
     def test_deleteInput
-      response = @bitcodinAPI.deleteInput(4442)
+      response = @bitcodinAPI.deleteInput(4436)
       assert_equal(response.code, ResponseCodes::DELETE)
     end
-å
+
     def teardown
       ## Nothing up to now
     end
