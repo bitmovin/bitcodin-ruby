@@ -1,21 +1,24 @@
 require 'bitcodin/version'
 require 'rubygems' if RUBY_VERSION < '1.9'
 require 'rest_client'
+require 'json'
 
 require 'bitcodin/input/http_input_config'
+require 'bitcodin/output/output_type'
+require 'bitcodin/output/s3_region'
 require 'bitcodin/output/s3_output_config'
 require 'bitcodin/output/gcs_output_config'
 require 'bitcodin/output/ftp_output_config'
 require 'bitcodin/media/encoding_profile'
+require 'bitcodin/media/preset'
+require 'bitcodin/media/profile'
 require 'bitcodin/job/job'
+require 'bitcodin/job/manifest_type'
 require 'bitcodin/transfer/transfer_config'
 require 'bitcodin/payment/invoice_infos'
 require 'bitcodin/network/http'
 
 module Bitcodin
-
-  MPEG_DASH_MPD = 'mpd'
-  HLS_M3U8      = 'm3u8'
 
   class BitcodinAPI
 
