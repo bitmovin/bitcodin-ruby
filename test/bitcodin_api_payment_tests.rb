@@ -6,16 +6,6 @@ Coveralls.wear!
 
 
 module Bitcodin
-
-  class ResponseCodes
-
-    GET    = 200
-    POST   = 200
-    DELETE = 204
-    PATCH  = 200
-
-  end
-
   class BitcodinApiPaymentTests < Test::Unit::TestCase
 
     def setup
@@ -33,7 +23,7 @@ module Bitcodin
 
     def test_updateInvoiceInfos
       response = @bitcodinAPI.updateInvoiceInfos(@invoiceInfo)
-      assert_equal(response.code, ResponseCodes::POST)
+      assert_equal(response.code, ResponseCodes::GET)
     end
 
     def test_getInvoiceInfos
