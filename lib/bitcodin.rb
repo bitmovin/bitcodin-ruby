@@ -171,6 +171,11 @@ module Bitcodin
       return @httpClient.sendRequest('get', url)
     end
 
+    def deleteJob(id)
+      url = @apiURL.concat('job/').concat(id.to_s)
+      return @httpClient.sendRequest('delete', url)
+    end
+
     # Statistics
 
     def getCurrentOutputStatus
