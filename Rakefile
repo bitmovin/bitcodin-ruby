@@ -3,7 +3,7 @@ require 'rake/testtask'
 
 Rake::TestTask.new do |t|
   t.libs << "test"
-  t.test_files = FileList['test/bitcodin_api_input_tests.rb']
+  t.test_files = FileList['test/input/*_test.rb']
   t.verbose = true
 end
 
