@@ -1,4 +1,14 @@
 module Bitcodin
+
+  class ResponseCodes
+
+    GET    = 200
+    POST   = 201
+    DELETE = 204
+    PATCH  = 200
+
+  end
+
   class HTTP
 
     attr_accessor :apiKey, :headers
