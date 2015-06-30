@@ -4,6 +4,14 @@
 
 The bitcodin API for Ruby is a seamless integration with the [bitcodin cloud transcoding system](http://www.bitcodin.com). It enables the generation of MPEG-DASH and HLS content in just some minutes.
 
+# Preparations
+
+Before you can use the bitcodin-ruby API wrapper, you have to install two ruby gems by executing the following command:
+
+```bash
+gem install rest-client coveralls 
+```
+
 # Getting started
 The main interaction with bitcodin will be handled through the BitcodinApi class. Therefore instantiate an object with your API key, which can be found in the settings of your bitcodin user account, as shown in the figure below.
 
