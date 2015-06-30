@@ -4,6 +4,22 @@
 
 The bitcodin API for Ruby is a seamless integration with the [bitcodin cloud transcoding system](http://www.bitcodin.com). It enables the generation of MPEG-DASH and HLS content in just some minutes.
 
+# Preparations
+
+Before you can use the bitcodin-ruby API wrapper, you have to install two ruby gems by executing the following command:
+
+```bash
+gem install rest-client coveralls 
+```
+Go into the folder, which helds the repo you cloned and execute the following commands to install the bitmovin gem:
+
+```bash
+gem build ruby.gemspec
+gem install bitcodin-version.gem
+```
+
+Be sure to replace 'version' with the appropriate version in the filename.
+
 # Getting started
 The main interaction with bitcodin will be handled through the BitcodinApi class. Therefore instantiate an object with your API key, which can be found in the settings of your bitcodin user account, as shown in the figure below.
 
@@ -33,7 +49,7 @@ class TranscodeSintelToDASHAndHLS
   @bitAPI  = Bitcodin::BitcodinAPI.new(@apiKey)
 
   # create http config
-  @httpConfig  = Bitcodin::HTTPInputConfig.new('http://ftp.nluug.nl/pub/graphics/blender/demo/movies/Sintel.2010.720p.mkv')
+  @httpConfig  = Bitcodin::HTTPInputConfig.new('http://eu-storage.bitcodin.com/inputs/Sintel.2010.720p.mkv')
 
   begin
     response     = @bitAPI.createInput(@httpConfig)
@@ -56,7 +72,7 @@ class TranscodeSintelToDASHAndHLS
   manifestTypes = []
   manifestTypes.push(Bitcodin::ManifestType::MPEG_DASH_MPD)
   manifestTypes.push(Bitcodin::ManifestType::HLS_M3U8)
-  @job = Bitcodin::Job.new(@inputId, 7353, manifestTypes)
+  @job = Bitcodin::Job.new(@inputId, 8588, manifestTypes)
 
   # create job
   begin
