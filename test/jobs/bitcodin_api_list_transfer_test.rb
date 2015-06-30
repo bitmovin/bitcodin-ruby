@@ -19,7 +19,7 @@ module Bitcodin
     end
 
     def test_getJobDetails
-      response = @bitcodinAPI.listTransferJob(3169)
+      response = @bitcodinAPI.listTransferJob(2854)
       assert_equal(response.code, ResponseCodes::GET)
     end
 

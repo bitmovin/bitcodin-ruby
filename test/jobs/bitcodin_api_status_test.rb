@@ -19,7 +19,7 @@ module Bitcodin
     end
 
     def test_getJobStatus
-      response = @bitcodinAPI.getCurrentJobStatus(3169)
+      response = @bitcodinAPI.getCurrentJobStatus(2854)
       assert_equal(response.code, ResponseCodes::GET)
     end
 

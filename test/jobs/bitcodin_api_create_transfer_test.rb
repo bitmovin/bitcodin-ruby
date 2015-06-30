@@ -15,7 +15,7 @@ module Bitcodin
       @apiKey = data['apikey']
 
       # create transfer config
-      @transferConfig = TransferConfig.new(3169, 3099)
+      @transferConfig = TransferConfig.new(2854, 2524)
 
     end
 
