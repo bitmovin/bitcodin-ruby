@@ -1,6 +1,6 @@
 require 'bitcodin/version'
 require 'rubygems' if RUBY_VERSION < '1.9'
-require 'rest_client'
+require 'rest-client'
 
 require 'bitcodin/input/http_input_config'
 require 'bitcodin/output/output_type'
