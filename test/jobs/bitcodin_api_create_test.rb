@@ -18,7 +18,7 @@ module Bitcodin
       manifestTypes = []
       manifestTypes.push(ManifestType::MPEG_DASH_MPD)
       manifestTypes.push(ManifestType::HLS_M3U8)
-      @job = Job.new(3868, 7353, manifestTypes)
+      @job = Job.new(5730, 8556, manifestTypes)
 
     end
 

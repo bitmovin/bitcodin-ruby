@@ -3,5 +3,6 @@ notifications:
   email:
   - bitcodin-ruby@bitmovin.net
 before_install:
-- openssl aes-256-cbc -K $encrypted_2da7166e2446_key -iv $encrypted_2da7166e2446_iv
+- openssl aes-256-cbc -K $encrypted_fdb9f8631a1e_key -iv $encrypted_fdb9f8631a1e_iv 
   -in test/resources/settings.json.enc -out test/resources/settings.json -d
+
