@@ -8,3 +8,69 @@ The bitcodin API for Ruby is a seamless integration with the [bitcodin cloud tra
 The main interaction with bitcodin will be handled through the BitcodinApi class. Therefore instantiate an object with your API key, which can be found in the settings of your bitcodin user account, as shown in the figure below.
 
 ![APIKey](http://www.bitcodin.com/wp-content/uploads/2015/06/api_key.png)
+
+An example how you can instantiate the bitcodin API is shown in the following:
+
+```ruby
+require 'bitcodin'
+
+class TranscodeSintelToDASHAndHLS
+  apiKey = "YOUR_API_KEY"
+  bitAPI  = Bitcodin::BitcodinAPI.new(apiKey)
+end
+```
+# Example
+The following example demonstrates how to create a simple transcoding job, generating MPEG-DASH and Apple HLS out of a single MP4.
+```ruby
+$LOAD_PATH.unshift("#{File.dirname(__FILE__)}/../lib")
+require 'bitcodin'
+require 'json'
+
+class TranscodeSintelToDASHAndHLS
+
+  # create bitcodinAPI
+  @apiKey = "YOUR_API_KEY"
+  @bitAPI  = Bitcodin::BitcodinAPI.new(@apiKey)
+
+  # create http config
+  @httpConfig  = Bitcodin::HTTPInputConfig.new('http://ftp.nluug.nl/pub/graphics/blender/demo/movies/Sintel.2010.720p.mkv')
+
+  begin
+    response     = @bitAPI.createInput(@httpConfig)
+    responseData = JSON.parse(response)
+    @inputId     = responseData['inputId']
+  rescue Exception => e
+    puts "Could not create Input."
+    puts e.message
+    puts e.backtrace.inspect
+    return nil
+  end
+
+  puts "Created input with ID: #{@inputId}."
+
+
+
+  @bitAPI  = Bitcodin::BitcodinAPI.new(@apiKey)
+
+  # create job config
+  manifestTypes = []
+  manifestTypes.push(Bitcodin::ManifestType::MPEG_DASH_MPD)
+  manifestTypes.push(Bitcodin::ManifestType::HLS_M3U8)
+  @job = Bitcodin::Job.new(@inputId, 7353, manifestTypes)
+
+  # create job
+  begin
+    response     = @bitAPI.createJob(@job)
+    responseData = JSON.parse(response)
+    @jobId       = responseData['jobId']
+  rescue Exception => e
+    puts "Could not create Job."
+    puts e.message
+    puts e.backtrace.inspect
+    return nil
+  end
+
+  puts "Created job with ID: #{@jobId}."
+
+end
+```
