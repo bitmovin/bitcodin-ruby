@@ -192,6 +192,7 @@ module Bitcodin
 
     def updateInvoiceInfos(infos)
       url = @apiURL.concat('payment/invoiceinfo')
+      puts infos.values
       return @httpClient.sendRequest('post', url, infos.values)
     end
 

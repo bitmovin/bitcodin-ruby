@@ -10,12 +10,12 @@ module Bitcodin
         "lastName": "'            + lastName + '",
         "address": "'             + address + '",
         "addressLineOptional": "' + addressLineOptional + '",
-        "postalCode": '           + postalCode.to_s + ',
+        "postalCode": "'           + postalCode.to_s + '",
         "city": "'                + city + '",
         "country": "'             + country + '",
         "vatNumber": "'           + vatNumber + '"
       }'
     end
-
+    
   end
 end
