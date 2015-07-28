@@ -204,12 +204,12 @@ module Bitcodin
     # Wallet
 
     def getWalletInformation
-      url = @apiURL.concat('wallet')
+      url = @apiURL.concat('payment/user')
       return @httpClient.sendRequest('get', url)
     end
 
     def getListOfAllDeposits(page = nil)
-      url = @apiURL.concat('wallet/deposits')
+      url = @apiURL.concat('payment/deposits')
       if page.nil?
         return @httpClient.sendRequest('get', url)
       else
@@ -219,7 +219,7 @@ module Bitcodin
     end
 
     def getListOfAllBills(page = nil)
-      url = @apiURL.concat('wallet/bills')
+      url = @apiURL.concat('payment/bills')
       if page.nil?
         return @httpClient.sendRequest('get', url)
       else
