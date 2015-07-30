@@ -16,6 +16,7 @@ require 'bitcodin/job/manifest_type'
 require 'bitcodin/transfer/transfer_config'
 require 'bitcodin/payment/invoice_infos'
 require 'bitcodin/network/http'
+require 'bitcodin/job/drm_configuration'
 
 module Bitcodin
 
