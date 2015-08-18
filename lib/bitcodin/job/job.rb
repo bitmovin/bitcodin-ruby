@@ -16,7 +16,6 @@ module Bitcodin
         @values += ',"hlsEncryptionConfig": ' + hlsEncryptionConfig + ''
       end
       @values += '}'
-      puts @values
     end
   end
 end
