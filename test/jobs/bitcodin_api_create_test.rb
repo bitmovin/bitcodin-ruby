@@ -138,4 +138,37 @@ module Bitcodin
     end
   end
 
+  class BitcodinApiCreateHlsEncryptionTest < Test::Unit::TestCase
+    def setup
+      # read access information (e.g. api key, etc.) from file
+      file    = File.read('test/resources/settings.json')
+      data    = JSON.parse(file)
+      @apiKey = data['apikey']
+
+      @hlsEncryption = HLSEncryptionConfiguration.new('SAMPLE-AES', 'cab5b529ae28d5cc5e3e7bc3fd4a544d', '08eecef4b026deec395234d94218273d')
+
+      # create job config
+      manifestTypes = []
+      manifestTypes.push(ManifestType::MPEG_DASH_MPD)
+      manifestTypes.push(ManifestType::HLS_M3U8)
+      @job = Job.new(3868, 7353, manifestTypes, 'standard', nil, @hlsEncryption.values)
+    end
+
+    def test_createJob
+      # create new bitcodinAPI instance
+      bitcodinAPI = BitcodinAPI.new(@apiKey)
+      # parse response to get job ID
+      response     = bitcodinAPI.createJob(@job)
+      responseData = JSON.parse(response)
+      @jobId       = responseData['jobId']
+
+      # check response code
+      assert_equal(response.code, ResponseCodes::POST)
+    end
+
+    def teardown
+
+    end
+  end
+
 end
