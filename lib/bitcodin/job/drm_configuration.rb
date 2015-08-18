@@ -1,11 +1,10 @@
 module Bitcodin
-  class DrmConfiguration
 
+  class WidevineDrmConfiguration
     attr_accessor :values
-
-    def initialize(system, provider, signing_key, signing_iv, request_url, content_id, method)
+    def initialize(provider, signing_key, signing_iv, request_url, content_id, method)
       @values = '{
-        "system": "'      + system + '",
+        "system": "'      + "widevine" + '",
         "provider": "' + provider + '",
         "signingKey": "' + signing_key + '",
         "signingIV": "' + signing_iv + '",
@@ -14,6 +13,33 @@ module Bitcodin
         "method": "' + method + '"
       }'
     end
-
   end
+
+  class PlayreadyDrmConfiguration
+    attr_accessor :values
+    def initialize(key_seed, la_url, method, kid)
+      @values = '{
+        "system": "'      + "playready" + '",
+        "keySeed": "' + key_seed + '",
+        "laUrl": "' + la_url + '",
+        "method": "' + method + '",
+        "kid": "' + kid + '"
+      }'
+    end
+  end
+
+  class WidevinePlayreadyCombinedDrmConfiguration
+    attr_accessor :values
+    def initialize(kid, key, la_url, method, pssh)
+      @values = '{
+        "system": "'      + "widevine_playready" + '",
+        "kid": "' + kid + '",
+        "key": "' + key + '",
+        "laUrl": "' + la_url + '",
+        "method": "' + method + '",
+        "pssh": "' + pssh + '"
+      }'
+    end
+  end
+
 end
