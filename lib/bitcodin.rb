@@ -20,6 +20,7 @@ require 'bitcodin/payment/invoice_infos'
 require 'bitcodin/network/http'
 require 'bitcodin/job/drm_configuration'
 require 'bitcodin/job/hls_encryption_configuration'
+require 'bitcodin/job/audio_meta_data_configuration'
 
 module Bitcodin
 

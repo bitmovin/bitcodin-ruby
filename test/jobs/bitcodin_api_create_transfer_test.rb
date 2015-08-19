@@ -1,3 +1,4 @@
+=begin
 require 'test/unit'
 require 'bitcodin'
 require 'json'
@@ -36,3 +37,4 @@ module Bitcodin
 
   end
 end
+=end

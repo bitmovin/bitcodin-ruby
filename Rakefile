@@ -50,4 +50,4 @@ Rake::TestTask.new do |t|
   t.verbose = true
 end
 
-task :default => ["input", "profiles", "payment", "statistics", "jobs", "wallet"]
+task :default => ["input", "profiles", "payment", "statistics", "jobs", "wallet", "output"]

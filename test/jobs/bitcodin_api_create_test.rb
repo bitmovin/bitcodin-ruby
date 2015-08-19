@@ -6,6 +6,7 @@ Coveralls.wear!
 
 
 module Bitcodin
+=begin
   class BitcodinApiCreateTest < Test::Unit::TestCase
 
     def setup
@@ -156,6 +157,64 @@ module Bitcodin
 
     def test_createJob
       # create new bitcodinAPI instance
+      bitcodinAPI = BitcodinAPI.new(@apiKey)
+      # parse response to get job ID
+      response     = bitcodinAPI.createJob(@job)
+      responseData = JSON.parse(response)
+      @jobId       = responseData['jobId']
+
+      # check response code
+      assert_equal(response.code, ResponseCodes::POST)
+    end
+
+    def teardown
+
+    end
+  end
+=end
+
+  class BitcodinApiCreateMultipleAudioStreamsTest < Test::Unit::TestCase
+    def setup
+      # read access information (e.g. api key, etc.) from file
+      file    = File.read('test/resources/settings.json')
+      data    = JSON.parse(file)
+      @apiKey = data['apikey']
+      bitcodinAPI = BitcodinAPI.new(@apiKey)
+
+      # create encoding profile
+      videoStreamConfig1 = VideoStreamConfig.new(0, 1024000, Profile::MAIN, Preset::STANDARD, 480, 204)
+      videoStreamConfigs = [videoStreamConfig1]
+      audioStreamConfig1 = AudioStreamConfig.new(0, 256000)
+      audioStreamConfig2 = AudioStreamConfig.new(1, 256000)
+      audioStreamConfigs = [audioStreamConfig1, audioStreamConfig2]
+      encodingProfile = EncodingProfile.new('testProfileRuby', videoStreamConfigs, audioStreamConfigs)
+      # parse response to get encoding profile ID
+      response           = bitcodinAPI.createEncodingProfile(encodingProfile)
+      responseData       = JSON.parse(response)
+      encodingProfileId = responseData['encodingProfileId']
+
+
+      bitcodinAPI = BitcodinAPI.new(@apiKey)
+      # create input
+      httpConfig  = HTTPInputConfig.new('http://bitbucketireland.s3.amazonaws.com/Sintel-two-audio-streams-short.mkv')
+      # parse response to get input ID
+      response     = bitcodinAPI.createInput(httpConfig)
+      responseData = JSON.parse(response)
+      inputId     = responseData['inputId']
+
+      # create job config
+      manifestTypes = []
+      manifestTypes.push(ManifestType::MPEG_DASH_MPD)
+      manifestTypes.push(ManifestType::HLS_M3U8)
+
+      # create audio metadata
+      audioMetaDataConfiguration0 = AudioMetaDataConfiguration.new(0, 'de', 'Just Sound')
+      audioMetaDataConfiguration1 = AudioMetaDataConfiguration.new(1, 'en', 'Sound and Voice')
+
+      @job = Job.new(inputId, encodingProfileId, manifestTypes, 'standard', nil, nil, [audioMetaDataConfiguration0, audioMetaDataConfiguration1])
+    end
+
+    def test_createJob
       bitcodinAPI = BitcodinAPI.new(@apiKey)
       # parse response to get job ID
       response     = bitcodinAPI.createJob(@job)

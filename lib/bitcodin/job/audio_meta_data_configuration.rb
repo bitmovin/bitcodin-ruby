@@ -1,11 +1,11 @@
 module Bitcodin
-  class HLSEncryptionConfiguration
+  class AudioMetaDataConfiguration
     attr_accessor :values
-    def initialize(method, key, iv)
+    def initialize(default_stream_id, language, label)
       @values = '{
-        "method": "' + method + '",
-        "key": "' + key + '",
-        "iv": "' + iv + '"
+        "defaultStreamId": ' + default_stream_id.to_s + ',
+        "language": "' + language + '",
+        "label": "' + label + '"
       }'
     end
   end
