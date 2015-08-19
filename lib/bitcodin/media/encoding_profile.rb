@@ -3,26 +3,30 @@ module Bitcodin
 
     attr_accessor :values
 
-    def initialize(name, defaultStreamIdVideo, bitrateVideo, profile, preset, height, width, defaultStreamIdAudio, bitrateAudio)
-      @values = '{
-        "name": "'     + name + '",
-        "videoStreamConfigs": [
-          {
-            "defaultStreamId": ' + defaultStreamIdVideo.to_s + ',
-            "bitrate": '         + bitrateVideo.to_s + ',
-            "profile": "'        + profile + '",
-            "preset":  "'        + preset + '",
-            "height": '          + height.to_s + ',
-            "width":  '          + width.to_s + '
-          }
-        ],
-        "audioStreamConfigs": [
-          {
-            "defaultStreamId": ' + defaultStreamIdAudio.to_s + ',
-            "bitrate": '         + bitrateAudio.to_s + '
-          }
-        ]
-      }'
+    #def initialize(name, defaultStreamIdVideo, bitrateVideo, profile, preset, height, width, defaultStreamIdAudio, bitrateAudio)
+    def initialize(name, videoStreamConfigs, audioStreamConfigs)  
+      @values =  '{'
+      @values += '"name": "' + name + '",'
+      @values += '"videoStreamConfigs": ['
+
+      videoStreamConfigs.each do |videoStreamConfig|
+        @values += videoStreamConfig.values
+        if videoStreamConfig != videoStreamConfigs.last
+          @values += ','
+        end
+      end
+
+      @values += '],'
+      @values += '"audioStreamConfigs": ['
+
+      audioStreamConfigs.each do |audioStreamConfig|
+        @values += audioStreamConfig.values
+        if audioStreamConfig != audioStreamConfigs.last
+          @values += ','
+        end
+      end
+
+      @values += ']}'
     end
 
   end

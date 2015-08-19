@@ -18,7 +18,11 @@ module Bitcodin
       bitcodinAPI = BitcodinAPI.new(@apiKey)
 
       # create encoding profile
-      encodingProfile = EncodingProfile.new('testProfile', 0, 1024000, Profile::MAIN, Preset::STANDARD, 480, 204, 0, 256000)
+      videoStreamConfig1 = VideoStreamConfig.new(0, 1024000, Profile::MAIN, Preset::STANDARD, 480, 204)
+      videoStreamConfigs = [videoStreamConfig1]
+      audioStreamConfig1 = AudioStreamConfig.new(0, 256000)
+      audioStreamConfigs = [audioStreamConfig1]
+      encodingProfile = EncodingProfile.new('testProfileRuby', videoStreamConfigs, audioStreamConfigs)
 
       # parse response to get input ID
       response           = bitcodinAPI.createEncodingProfile(encodingProfile)
