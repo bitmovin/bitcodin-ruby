@@ -6,7 +6,6 @@ Coveralls.wear!
 
 
 module Bitcodin
-=begin
   class BitcodinApiCreateTest < Test::Unit::TestCase
 
     def setup
@@ -171,7 +170,6 @@ module Bitcodin
 
     end
   end
-=end
 
   class BitcodinApiCreateMultipleAudioStreamsTest < Test::Unit::TestCase
     def setup

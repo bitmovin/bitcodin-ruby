@@ -2,7 +2,7 @@ $LOAD_PATH.unshift("#{File.dirname(__FILE__)}/../lib")
 require 'bitcodin'
 require 'json'
 
-class TranscodeSintelToDASHAndHLS
+class CreateJobWidevineDrm
 
   # create bitcodinAPI
   @apiKey = "YOUR_API_KEY"
