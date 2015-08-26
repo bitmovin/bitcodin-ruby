@@ -21,6 +21,8 @@ require 'bitcodin/network/http'
 require 'bitcodin/job/drm_configuration'
 require 'bitcodin/job/hls_encryption_configuration'
 require 'bitcodin/job/audio_meta_data_configuration'
+require 'bitcodin/job/video_meta_data_configuration'
+require 'bitcodin/job/location'
 
 module Bitcodin
 
@@ -143,7 +145,8 @@ module Bitcodin
 
     def createJob(config)
       url = @apiURL.concat('job/create')
-      return @httpClient.sendRequest('post', url, config.values)
+      response = @httpClient.sendRequest('post', url, config.values)
+      return response
     end
 
     def listAllJobs(page = nil)
@@ -193,7 +196,7 @@ module Bitcodin
       return @httpClient.sendRequest('get', url)
     end
 
-    # Paymant
+    # Payment
 
     def updateInvoiceInfos(infos)
       url = @apiURL.concat('payment/invoiceinfo')

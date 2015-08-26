@@ -66,7 +66,8 @@ module Bitcodin
         return response
       rescue Exception => e
         puts e.message
-        puts e.backtrace.inspect
+        puts e.inspect
+        e.backtrace
         return nil
       end
     end

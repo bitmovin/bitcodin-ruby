@@ -6,6 +6,7 @@ Coveralls.wear!
 
 
 module Bitcodin
+
   class BitcodinApiCreateTest < Test::Unit::TestCase
 
     def setup
@@ -228,4 +229,54 @@ module Bitcodin
     end
   end
 
+  class BitcodinApiCreateLocationJobTest < Test::Unit::TestCase
+    def setup
+      file    = File.read('test/resources/settings.json')
+      data    = JSON.parse(file)
+      @apiKey = data['apikey']
+      bitcodinAPI = BitcodinAPI.new(@apiKey)
+
+      # create encoding profile
+      videoStreamConfig1 = VideoStreamConfig.new(0, 1024000, Profile::MAIN, Preset::STANDARD, 480, 204)
+      videoStreamConfigs = [videoStreamConfig1]
+      audioStreamConfig1 = AudioStreamConfig.new(0, 256000)
+      audioStreamConfigs = [audioStreamConfig1]
+      encodingProfile = EncodingProfile.new('testProfileRuby', videoStreamConfigs, audioStreamConfigs)
+      # parse response to get encoding profile ID
+      response           = bitcodinAPI.createEncodingProfile(encodingProfile)
+      responseData       = JSON.parse(response)
+      encodingProfileId = responseData['encodingProfileId']
+
+
+      bitcodinAPI = BitcodinAPI.new(@apiKey)
+      # create input
+      httpConfig  = HTTPInputConfig.new('http://bitbucketireland.s3.amazonaws.com/Sintel-two-audio-streams-short.mkv')
+      # parse response to get input ID
+      response     = bitcodinAPI.createInput(httpConfig)
+      responseData = JSON.parse(response)
+      inputId     = responseData['inputId']
+
+      # create job config
+      manifestTypes = []
+      manifestTypes.push(ManifestType::MPEG_DASH_MPD)
+      manifestTypes.push(ManifestType::HLS_M3U8)
+
+      @job = Job.new(inputId, encodingProfileId, manifestTypes, 'standard', nil, nil, nil, Location::EU_WEST)
+    end
+
+    def test_createJob
+      bitcodinAPI = BitcodinAPI.new(@apiKey)
+      # parse response to get job ID
+      response     = bitcodinAPI.createJob(@job)
+      responseData = JSON.parse(response)
+      @jobId       = responseData['jobId']
+
+      # check response code
+      assert_equal(response.code, ResponseCodes::POST)
+    end
+
+    def teardown
+
+    end
+  end
 end
