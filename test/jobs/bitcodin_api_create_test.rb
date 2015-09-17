@@ -19,7 +19,7 @@ module Bitcodin
       manifestTypes = []
       manifestTypes.push(ManifestType::MPEG_DASH_MPD)
       manifestTypes.push(ManifestType::HLS_M3U8)
-      @job = Job.new(3868, 7353, manifestTypes)
+      @job = Job.new(20541, 7353, manifestTypes)
     end
 
     def test_createJob
@@ -53,7 +53,7 @@ module Bitcodin
       manifestTypes = []
       manifestTypes.push(ManifestType::MPEG_DASH_MPD)
       manifestTypes.push(ManifestType::HLS_M3U8)
-      @job = Job.new(3868, 7353, manifestTypes, 'standard', @drmConfig.values)
+      @job = Job.new(20541, 7353, manifestTypes, 'standard', @drmConfig.values)
     end
 
     def test_createJob
@@ -86,7 +86,7 @@ module Bitcodin
       manifestTypes = []
       manifestTypes.push(ManifestType::MPEG_DASH_MPD)
       manifestTypes.push(ManifestType::HLS_M3U8)
-      @job = Job.new(3868, 7353, manifestTypes, 'standard', @drmConfig.values)
+      @job = Job.new(20541, 7353, manifestTypes, 'standard', @drmConfig.values)
     end
 
     def test_createJob
@@ -119,7 +119,7 @@ module Bitcodin
       manifestTypes = []
       manifestTypes.push(ManifestType::MPEG_DASH_MPD)
       manifestTypes.push(ManifestType::HLS_M3U8)
-      @job = Job.new(3868, 7353, manifestTypes, 'standard', @drmConfig.values)
+      @job = Job.new(20541, 7353, manifestTypes, 'standard', @drmConfig.values)
     end
 
     def test_createJob
@@ -152,7 +152,7 @@ module Bitcodin
       manifestTypes = []
       manifestTypes.push(ManifestType::MPEG_DASH_MPD)
       manifestTypes.push(ManifestType::HLS_M3U8)
-      @job = Job.new(3868, 7353, manifestTypes, 'standard', nil, @hlsEncryption.values)
+      @job = Job.new(20541, 7353, manifestTypes, 'standard', nil, @hlsEncryption.values)
     end
 
     def test_createJob
