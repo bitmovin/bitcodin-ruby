@@ -18,7 +18,7 @@ module Bitcodin
       bitcodinAPI = BitcodinAPI.new(@apiKey)
 
       # create http config
-      httpConfig = HTTPInputConfig.new('http://eu-storage.bitcodin.com/inputs/Sintel.2010.720p.mkv')
+      httpConfig = HTTPInputConfig.new('http://bitbucketireland.s3.amazonaws.com/Sintel-original-short.mkv')
 
       # create input
       response = bitcodinAPI.createInput(httpConfig)
