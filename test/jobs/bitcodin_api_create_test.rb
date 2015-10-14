@@ -261,7 +261,7 @@ module Bitcodin
       manifestTypes.push(ManifestType::MPEG_DASH_MPD)
       manifestTypes.push(ManifestType::HLS_M3U8)
 
-      @job = Job.new(inputId, encodingProfileId, manifestTypes, 'standard', nil, nil, nil, Location::EU_WEST)
+      @job = Job.new(inputId, encodingProfileId, manifestTypes, 'standard', nil, nil, nil, Location::DEFAULT)
     end
 
     def test_createJob
