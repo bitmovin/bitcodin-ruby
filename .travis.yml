@@ -1,4 +1,7 @@
 language: ruby
+branches:
+  only:
+    - master
 notifications:
   email:
   - bitcodin-ruby@bitmovin.net
