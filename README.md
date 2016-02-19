@@ -14,11 +14,11 @@ gem install rest-client coveralls
 Go into the folder, which helds the repo you cloned and execute the following commands to install the bitmovin gem:
 
 ```bash
-gem build ruby.gemspec
-gem install bitcodin-version.gem
+gem build bitcodin.gemspec
+gem install bitcodin-<version>.gem
 ```
 
-Be sure to replace 'version' with the appropriate version in the filename.
+Be sure to replace 'version' with the appropriate <version> in the filename.
 
 # Getting started
 The main interaction with bitcodin will be handled through the BitcodinApi class. Therefore instantiate an object with your API key, which can be found in the settings of your bitcodin user account, as shown in the figure below.

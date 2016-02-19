@@ -15,8 +15,8 @@ module Bitcodin
       @apiKey = data['apikey']
 
       # create encoding profile
-      videoStreamConfig1 = VideoStreamConfig.new(0, 1024000, Profile::MAIN, Preset::STANDARD, 480, 204)
-      videoStreamConfig2 = VideoStreamConfig.new(0, 1024000, Profile::MAIN, Preset::STANDARD, 1366, 768)
+      videoStreamConfig1 = VideoStreamConfig.new(0, 1024000, Profile::MAIN, Preset::PREMIUM, 480, 204)
+      videoStreamConfig2 = VideoStreamConfig.new(0, 1024000, Profile::MAIN, Preset::PREMIUM, 1366, 768)
       videoStreamConfigs = [videoStreamConfig1, videoStreamConfig2]
       audioStreamConfig1 = AudioStreamConfig.new(0, 256000)
       audioStreamConfigs = [audioStreamConfig1]

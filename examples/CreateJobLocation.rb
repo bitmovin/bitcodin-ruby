@@ -27,8 +27,10 @@ class CreateJobLocation
   # ENCODING PROFILE
   @bitAPI  = Bitcodin::BitcodinAPI.new(@apiKey)
   # create encoding profile
-  videoStreamConfig1 = Bitcodin::VideoStreamConfig.new(0, 1024000, Profile::MAIN, Preset::STANDARD, 480, 204)
-  videoStreamConfigs = [videoStreamConfig1]
+  videoStreamConfig1 = Bitcodin::VideoStreamConfig.new(0, 4800000, Bitcodin::Profile::MAIN, Bitcodin::Preset::PREMIUM, 1080, 1920)
+  videoStreamConfig2 = Bitcodin::VideoStreamConfig.new(0, 2400000, Bitcodin::Profile::MAIN, Bitcodin::Preset::PREMIUM, 720, 1280)
+  videoStreamConfig3 = Bitcodin::VideoStreamConfig.new(0, 1200000, Bitcodin::Profile::MAIN, Bitcodin::Preset::PREMIUM, 480, 856)
+  videoStreamConfigs = [videoStreamConfig1, videoStreamConfig2, videoStreamConfig3]
   audioStreamConfig1 = Bitcodin::AudioStreamConfig.new(0, 256000)
   audioStreamConfig2 = Bitcodin::AudioStreamConfig.new(1, 256000)
   audioStreamConfigs = [audioStreamConfig1, audioStreamConfig2]
@@ -45,7 +47,7 @@ class CreateJobLocation
   manifestTypes.push(Bitcodin::ManifestType::MPEG_DASH_MPD)
   manifestTypes.push(Bitcodin::ManifestType::HLS_M3U8)
 
-  @job = Bitcodin::Job.new(@inputId, @encodingProfileId, manifestTypes, 'standard', nil, nil, nil, Location::EU_WEST)
+  @job = Bitcodin::Job.new(@inputId, @encodingProfileId, manifestTypes, 'standard', nil, nil, nil, Bitcodin::Location::EU_WEST)
 
   # create job
   begin

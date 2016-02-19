@@ -33,7 +33,7 @@ class CreateJobHlsEncryption
   manifestTypes.push(Bitcodin::ManifestType::MPEG_DASH_MPD)
   manifestTypes.push(Bitcodin::ManifestType::HLS_M3U8)
 
-  @hlsEncryption = HLSEncryptionConfiguration.new('SAMPLE-AES', 'cab5b529ae28d5cc5e3e7bc3fd4a544d', '08eecef4b026deec395234d94218273d')
+  @hlsEncryption = Bitcodin::HLSEncryptionConfiguration.new('SAMPLE-AES', 'cab5b529ae28d5cc5e3e7bc3fd4a544d', '08eecef4b026deec395234d94218273d')
   @job = Bitcodin::Job.new(@inputId, 8588, manifestTypes, 'standard', nil, @hlsEncryption.values)
 
   # create job
