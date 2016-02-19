@@ -27,9 +27,9 @@ class CreateJobWithMultipleAudioStreams
   # ENCODING PROFILE
   @bitAPI  = Bitcodin::BitcodinAPI.new(@apiKey)
   # create encoding profile
-  videoStreamConfig1 = Bitcodin::VideoStreamConfig.new(0, 4800000, Profile::MAIN, Preset::PREMIUM, 1080, 1920)
-  videoStreamConfig2 = Bitcodin::VideoStreamConfig.new(0, 2400000, Profile::MAIN, Preset::PREMIUM, 720, 1280)
-  videoStreamConfig3 = Bitcodin::VideoStreamConfig.new(0, 1200000, Profile::MAIN, Preset::PREMIUM, 480, 856)
+  videoStreamConfig1 = Bitcodin::VideoStreamConfig.new(0, 4800000, Bitcodin::Profile::MAIN, Bitcodin::Preset::PREMIUM, 1080, 1920)
+  videoStreamConfig2 = Bitcodin::VideoStreamConfig.new(0, 2400000, Bitcodin::Profile::MAIN, Bitcodin::Preset::PREMIUM, 720, 1280)
+  videoStreamConfig3 = Bitcodin::VideoStreamConfig.new(0, 1200000, Bitcodin::Profile::MAIN, Bitcodin::Preset::PREMIUM, 480, 856)
   videoStreamConfigs = [videoStreamConfig1, videoStreamConfig2, videoStreamConfig3]
   audioStreamConfig1 = Bitcodin::AudioStreamConfig.new(0, 256000)
   audioStreamConfig2 = Bitcodin::AudioStreamConfig.new(1, 256000)
@@ -50,10 +50,10 @@ class CreateJobWithMultipleAudioStreams
   manifestTypes.push(Bitcodin::ManifestType::HLS_M3U8)
 
   # create audio metadata
-  audioMetaDataConfiguration0 = AudioMetaDataConfiguration.new(0, 'de', 'Just Sound')
-  audioMetaDataConfiguration1 = AudioMetaDataConfiguration.new(1, 'en', 'Sound and Voice')
+  audioMetaDataConfiguration0 = Bitcodin::AudioMetaDataConfiguration.new(0, 'de', 'Just Sound')
+  audioMetaDataConfiguration1 = Bitcodin::AudioMetaDataConfiguration.new(1, 'en', 'Sound and Voice')
 
-  videoMetaDataConfiguration = VideoMetaDataConfiguration.new(0, 'de', 'German Subtitles')
+  videoMetaDataConfiguration = Bitcodin::VideoMetaDataConfiguration.new(0, 'de', 'German Subtitles')
 
   @job = Bitcodin::Job.new(@inputId, @encodingProfileId, manifestTypes, 'standard', nil, nil, [audioMetaDataConfiguration0, audioMetaDataConfiguration1], nil, [videoMetaDataConfiguration])
 

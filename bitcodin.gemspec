@@ -4,7 +4,7 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'bitcodin/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = "ruby"
+  spec.name          = "bitcodin"
   spec.version       = Bitcodin::VERSION
   spec.authors       = ["Reinhard Grandl"]
   spec.email         = ["reinhard.grandl@bitmovin.net"]
