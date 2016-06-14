@@ -23,6 +23,8 @@ require 'bitcodin/job/hls_encryption_configuration'
 require 'bitcodin/job/audio_meta_data_configuration'
 require 'bitcodin/job/video_meta_data_configuration'
 require 'bitcodin/job/location'
+require 'bitcodin/subtitle/vtt_mpd'
+require 'bitcodin/subtitle/vtt_mpd_configuration'
 
 module Bitcodin
 
@@ -30,7 +32,7 @@ module Bitcodin
 
     def initialize(apiKey)
       @apiKey  = apiKey
-      @apiURL  = 'http://portal.bitcodin.com/api/'
+      @apiURL  = 'https://portal.bitcodin.com/api/'
       @headers = {
           :content_type => 'application/json',
           :bitcodin_api_version => 'v1',
@@ -234,6 +236,13 @@ module Bitcodin
         url = url.concat('/').concat(page.to_s)
         return @httpClient.sendRequest('get', url)
       end
+    end
+
+    # VTT Files
+    def createVttMPD(config)
+      url = @apiURL.concat('manifest/mpd/vtt')
+      response = @httpClient.sendRequest('post', url, config.values)
+      return response
     end
 
   end
