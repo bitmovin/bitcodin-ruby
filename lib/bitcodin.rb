@@ -25,6 +25,8 @@ require 'bitcodin/job/video_meta_data_configuration'
 require 'bitcodin/job/location'
 require 'bitcodin/subtitle/vtt_mpd'
 require 'bitcodin/subtitle/vtt_mpd_configuration'
+require 'bitcodin/subtitle/vtt_hls'
+require 'bitcodin/subtitle/vtt_hls_configuration'
 
 module Bitcodin
 
@@ -241,6 +243,13 @@ module Bitcodin
     # VTT Files
     def createVttMPD(config)
       url = @apiURL.concat('manifest/mpd/vtt')
+      response = @httpClient.sendRequest('post', url, config.values)
+      return response
+    end
+
+    # HLS Files
+    def createVttHLS(config)
+      url = @apiURL.concat('manifest/hls/vtt')
       response = @httpClient.sendRequest('post', url, config.values)
       return response
     end
