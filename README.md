@@ -1,8 +1,8 @@
-# [![bitcodin](http://www.bitcodin.com/wp-content/uploads/2014/10/bitcodin-small.gif)](http://www.bitcodin.com)
+# [![bitmovin](https://cloudfront-prod.bitmovin.com/wp-content/themes/Bitmovin-V-0.1/images/logo3.png)](http://www.bitmovin.com)
 [![build status](https://travis-ci.org/bitmovin/bitcodin-ruby.svg?branch=master)](https://travis-ci.org/bitmovin/bitcodin-ruby)
 [![Coverage Status](https://coveralls.io/repos/bitmovin/bitcodin-ruby/badge.svg?branch=master)](https://coveralls.io/r/bitmovin/bitcodin-ruby?branch=master)
 
-The bitcodin API for Ruby is a seamless integration with the [bitcodin cloud transcoding system](http://www.bitcodin.com). It enables the generation of MPEG-DASH and HLS content in just some minutes.
+The bitcodin API for Ruby is a seamless integration with the [bitmovin cloud transcoding system](http://www.bitmovin.com). It enables the generation of MPEG-DASH and HLS content in just some minutes.
 
 # Preparations
 
@@ -23,7 +23,7 @@ Be sure to replace 'version' with the appropriate <version> in the filename.
 # Getting started
 The main interaction with bitcodin will be handled through the BitcodinApi class. Therefore instantiate an object with your API key, which can be found in the settings of your bitcodin user account, as shown in the figure below.
 
-![APIKey](http://www.bitcodin.com/wp-content/uploads/2015/06/api_key.png)
+![APIKey](https://cloudfront-prod.bitmovin.com/wp-content/uploads/2016/04/api-key.png)
 
 An example how you can instantiate the bitcodin API is shown in the following:
 
