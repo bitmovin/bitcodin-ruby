@@ -23,6 +23,8 @@ require 'bitcodin/job/hls_encryption_configuration'
 require 'bitcodin/job/audio_meta_data_configuration'
 require 'bitcodin/job/video_meta_data_configuration'
 require 'bitcodin/job/location'
+require 'bitcodin/thumbnail/thumbnail_config'
+require 'bitcodin/sprite/sprite_config'
 
 module Bitcodin
 
@@ -236,5 +238,30 @@ module Bitcodin
       end
     end
 
+    # Thumbnail
+
+    def createThumbnail(config)
+      url = @apiURL.concat('thumbnail')
+      response = @httpClient.sendRequest('post', url, config.values)
+      return response
+    end
+
+    def getThumbnail(id)
+      url = @apiURL.concat('thumbnail/').concat(id.to_s)
+      return @httpClient.sendRequest('get', url)
+    end
+
+    # Sprite
+
+    def createSprite(config)
+      url = @apiURL.concat('sprite')
+      response = @httpClient.sendRequest('post', url, config.values)
+      return response
+    end
+
+    def getSprite(id)
+      url = @apiURL.concat('sprite/').concat(id.to_s)
+      return @httpClient.sendRequest('get', url)
+    end
   end
 end
